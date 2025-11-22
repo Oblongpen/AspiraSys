@@ -533,6 +533,126 @@
         .container{
             width: 92%;
         }
+
+        /* --- Floating Chatbot Styles --- */
+        .chat-widget-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent-orange);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 1050;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .chat-widget-btn:hover {
+            transform: scale(1.1) rotate(10deg);
+            background-color: var(--accent-orange-hover);
+        }
+        .chat-window {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            max-height: 80vh;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            z-index: 1050;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .chat-window.open {
+            display: flex;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .chat-header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .chat-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .chat-footer {
+            padding: 12px;
+            border-top: 1px solid #e2e8f0;
+            background: white;
+            display: flex;
+            gap: 8px;
+        }
+        .chat-message {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+            word-wrap: break-word;
+        }
+        .chat-message.user {
+            background: var(--primary-blue);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        .chat-message.bot {
+            background: white;
+            color: #334155;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .chat-input {
+            border-radius: 20px;
+            padding-left: 15px;
+            border: 1px solid #cbd5e1;
+        }
+        .chat-input:focus {
+            border-color: var(--accent-orange);
+            box-shadow: none;
+        }
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #94a3b8;
+            border-radius: 50%;
+            display: inline-block;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
     </style>
 </head>
 <body>
@@ -932,7 +1052,7 @@
                             </div>
 
                             <!-- WhatsApp Button -->
-                            <a href="https://wa.me/919345144398?text=Hi%20Yasir,%20I'm%20interested%20in%20AspiraSys." target="_blank" class="btn btn-sm w-100 mt-4 text-white fw-bold d-flex align-items-center justify-content-center" style="background-color: #25D366; border: none; box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);">
+                            <a href="https://wa.me/919341544398?text=Hi%20Yasir,%20I'm%20interested%20in%20AspiraSys." target="_blank" class="btn btn-sm w-100 mt-4 text-white fw-bold d-flex align-items-center justify-content-center" style="background-color: #25D366; border: none; box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);">
                                 <i class="fab fa-whatsapp fa-lg me-2"></i> Chat with Yasir
                             </a>
                         </div>
@@ -973,7 +1093,7 @@
                             </div>
 
                             <!-- WhatsApp Button -->
-                            <a href="https://wa.me/919629446786?text=Hi%20Yasir,%20I'm%20interested%20in%20AspiraSys." target="_blank" class="btn btn-sm w-100 mt-4 text-white fw-bold d-flex align-items-center justify-content-center" style="background-color: #25D366; border: none; box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);">
+                            <a href="https://wa.me/919341544398?text=Hi%20Yasir,%20I'm%20interested%20in%20AspiraSys." target="_blank" class="btn btn-sm w-100 mt-4 text-white fw-bold d-flex align-items-center justify-content-center" style="background-color: #25D366; border: none; box-shadow: 0 4px 6px rgba(37, 211, 102, 0.2);">
                                 <i class="fab fa-whatsapp fa-lg me-2"></i> Chat with Yasir
                             </a>
                         </div>
@@ -1656,7 +1776,7 @@
         <div class="form-container">
             <div class="form-header position-relative overflow-hidden">
                 <h2 class="fw-bold position-relative z-1">Start Your Journey</h2>
-                <p class="m-0 position-relative z-1 text-white-50">Join the next aspirants of innovators.</p>
+                <p class="m-0 position-relative z-1 text-white-50">Join in the next AspiraSys of innovators.</p>
                 <svg class="position-absolute bottom-0 start-0 w-100" viewBox="0 0 100 100" preserveAspectRatio="none" style="height:50px; opacity:0.1;">
                     <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
                 </svg>
@@ -1693,7 +1813,7 @@
                         <label class="form-label fw-bold small">Phone Number</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-phone text-secondary"></i></span>
-                            <input type="tel" class="form-control" name="user_phone" required placeholder="+91 9876543210">
+                            <input type="tel" class="form-control" name="user_phone" required placeholder="+91 93415 44398">
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -1723,20 +1843,26 @@
                     <div class="col-12">
                         <div class="d-flex justify-content-between align-items-center mb-1">
                             <label class="form-label fw-bold small m-0">Why this internship?</label>
-                            <!-- AI Auto Draft Button (NEW) -->
-                            <button type="button" id="btn-ai-draft" class="btn btn-sm btn-outline-warning" onclick="draftAIApplication()" style="font-size: 0.75rem;">
-                                <i class="fas fa-magic me-1"></i> ✨ AI Auto-Draft
-                            </button>
+                            <div class="d-flex gap-2">
+                                <!-- AI Auto Draft Button -->
+                                <button type="button" id="btn-ai-draft" class="btn btn-sm btn-outline-warning" onclick="draftAIApplication()" style="font-size: 0.75rem;">
+                                    <i class="fas fa-magic me-1"></i> ✨ Auto-Draft
+                                </button>
+                                <!-- AI Refine Button (NEW) -->
+                                <button type="button" id="btn-ai-refine" class="btn btn-sm btn-outline-info" onclick="refineAIApplication()" style="font-size: 0.75rem;">
+                                    <i class="fas fa-pen-fancy me-1"></i> Refine / Polish
+                                </button>
+                            </div>
                         </div>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fas fa-file-text text-secondary"></i></span>
-                            <textarea class="form-control" rows="4" name="message" id="inputMessage" required placeholder="Tell us about your goals..."></textarea>
+                            <textarea class="form-control" rows="4" name="message" id="inputMessage" required placeholder="Tell us about your goals, or use the AI buttons above..."></textarea>
                         </div>
                     </div>
                     <div class="col-12 mt-4">
-                        <!-- Updated Button Text with Gmail -->
+                        <!-- Updated Button Text -->
                         <button type="submit" id="submitBtn" class="btn btn-orange w-100 py-3 fw-bold shadow">
-                            <span id="submitText">Submit The Application<i class="fas fa-paper-plane ms-2"></i></span>
+                            <span id="submitText">Submit to AspiraSys<i class="fas fa-paper-plane ms-2"></i></span>
                             <span id="submitLoader" class="d-none"><i class="fas fa-circle-notch fa-spin me-2"></i> Submitting...</span>
                         </button>
                     </div>
@@ -1785,7 +1911,7 @@
                     <h6 class="text-uppercase mb-4 fw-bold text-warning">Contact</h6>
                     <p class="text-white-50 small"><i class="fas fa-home me-2"></i> Anaikar Complex, Periamet, Chennai, Tamil Nadu - 600003</p>
                     <p class="text-white-50 small"><i class="fas fa-envelope me-2"></i> mdmuzamil0311@gmail.com</p>
-                    <p class="text-white-50 small"><i class="fas fa-phone me-2"></i> +91 9876543210</p>
+                    <p class="text-white-50 small"><i class="fas fa-phone me-2"></i> +91 93415 44398</p>
                 </div>
             </div>
 
@@ -1819,6 +1945,34 @@
             </div>
         </div>
     </footer>
+
+    <!-- FLOATING CHATBOT WIDGET (NEW) -->
+    <button class="chat-widget-btn" onclick="toggleChat()">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="chat-header">
+            <div class="d-flex align-items-center">
+                <div class="bg-white text-primary rounded-circle d-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                    <i class="fas fa-robot fa-sm"></i>
+                </div>
+                <span class="fw-bold">AspiraBot</span>
+            </div>
+            <button class="btn btn-sm text-white p-0" onclick="toggleChat()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="chat-body" id="chatBody">
+            <div class="chat-message bot">
+                Hi there! 👋 I'm AspiraBot. Ask me anything about our internships, career paths, or how to apply!
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" class="form-control chat-input" placeholder="Type a message..." onkeypress="handleChatEnter(event)">
+            <button class="btn btn-orange rounded-circle" onclick="sendChatMessage()" style="width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-paper-plane fa-sm"></i>
+            </button>
+        </div>
+    </div>
 
     <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -2324,6 +2478,140 @@ ${formData.get('message')}
                 btn.disabled = false;
                 btn.innerHTML = '<i class="fas fa-redo me-1"></i> New Idea';
             }
+        }
+
+        // --- NEW AI FEATURE: Refine / Polish Application ---
+        async function refineAIApplication() {
+            const msgBox = document.getElementById('inputMessage');
+            const currentText = msgBox.value.trim();
+            const btn = document.getElementById('btn-ai-refine');
+
+            if (!currentText || currentText.length < 10) {
+                alert("Please write a draft first (at least a few words) so I can polish it!");
+                return;
+            }
+
+            const originalBtnContent = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin me-1"></i> Polishing...';
+
+            const systemPrompt = `
+            You are a professional career coach.
+            Refine and polish the following user's internship application text.
+            Make it sound more professional, passionate, and grammatically correct, but keep it concise (under 4 sentences).
+            Do not add placeholders. Output ONLY the refined text.
+            `;
+
+            try {
+                 const response = await fetch(
+                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: currentText }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] }
+                        })
+                    }
+                );
+                
+                const data = await response.json();
+                const text = data.candidates?.[0]?.content?.parts?.[0]?.text || "";
+                
+                if(text) {
+                    msgBox.value = text.trim();
+                } else {
+                    alert("AI couldn't refine the text right now.");
+                }
+
+            } catch (err) {
+                console.error(err);
+                alert("AI service unavailable right now.");
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalBtnContent;
+            }
+        }
+
+        // --- CHATBOT LOGIC ---
+        function toggleChat() {
+            const chatWindow = document.getElementById('chatWindow');
+            chatWindow.classList.toggle('open');
+            if (chatWindow.classList.contains('open')) {
+                document.getElementById('chatInput').focus();
+            }
+        }
+
+        function handleChatEnter(e) {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        async function sendChatMessage() {
+            const inputEl = document.getElementById('chatInput');
+            const chatBody = document.getElementById('chatBody');
+            const message = inputEl.value.trim();
+
+            if (!message) return;
+
+            // Add User Message
+            const userDiv = document.createElement('div');
+            userDiv.className = 'chat-message user';
+            userDiv.innerText = message;
+            chatBody.appendChild(userDiv);
+            
+            // Clear Input
+            inputEl.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Add Loading Bubble
+            const loadingDiv = document.createElement('div');
+            loadingDiv.className = 'chat-message bot';
+            loadingDiv.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+            chatBody.appendChild(loadingDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            const systemPrompt = `
+            You are AspiraBot, a friendly and helpful AI assistant for "AspiraSys", an IT training and internship organization.
+            We offer internships in: Web Launchpad, Creative Tech, Agentic AI, Content Creation, Full Stack, Data Science, Business Analyst, and Digital Growth.
+            Your goal is to answer user questions about these programs, our Not-For-Profit mission, and career guidance concisely.
+            Keep answers short (under 50 words) and encouraging.
+            `;
+
+            try {
+                const response = await fetch(
+                    `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
+                    {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            contents: [{ parts: [{ text: message }] }],
+                            systemInstruction: { parts: [{ text: systemPrompt }] }
+                        })
+                    }
+                );
+
+                const data = await response.json();
+                const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm having trouble connecting right now. Try again later.";
+
+                // Remove loading and add reply
+                chatBody.removeChild(loadingDiv);
+                const botDiv = document.createElement('div');
+                botDiv.className = 'chat-message bot';
+                botDiv.innerText = reply;
+                chatBody.appendChild(botDiv);
+
+            } catch (err) {
+                console.error(err);
+                chatBody.removeChild(loadingDiv);
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'chat-message bot';
+                errorDiv.innerText = "Sorry, I can't reach the server right now.";
+                chatBody.appendChild(errorDiv);
+            }
+            
+            chatBody.scrollTop = chatBody.scrollHeight;
         }
 
     </script>
